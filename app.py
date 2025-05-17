@@ -2,9 +2,10 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, State, html, dcc, callback
 from Cards import cards
-# from Heart import heart
+from Heart import heart
 from Diabetes import diabetes
 from Navbar import navbar
+from notfound import notfound
 
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP, 'https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css'], 
                 suppress_callback_exceptions=True, title="Disease Prediction using Patient Data")
@@ -22,12 +23,12 @@ html.Div([], id="page-content", className="pt-5")])
 def pages(pathname):
     if pathname == '/':
         return cards
-    # elif pathname == '/heart':
-    #     return heart
-    elif pathname == '/diabetes':
+    elif pathname == '/heart':
+        return heart
+    elif pathname == '/diabetes_female':
         return diabetes
     else:
-        return cards
+        return notfound
 
 if __name__ == "__main__":
-    app.run_server(debug=True, port=8888)
+    app.run(debug=True, port=8888)

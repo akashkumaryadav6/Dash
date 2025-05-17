@@ -164,16 +164,8 @@ def predict(n_clicks, *values):
     ],
     prevent_initial_call=True
 )
-def download_report(n_clicks, PhysicalActivities, HadAngina, HadStroke, HadAsthma, HadSkinCancer, HadCOPD,
-                    HadDepressiveDisorder, HadKidneyDisease, HadArthritis, HadDiabetes,DeafOrHardOfHearing, 
-                    BlindorVisionDifficulty, DifficultyConcentrating, DifficultyWalking, DifficultyDressingBathing, 
-                    SleepHours, DifficultyErrands, ChestScan, AlcoholDrinkers, HIVTesting, HighRiskLastYear, 
-                    GeneralHealth, SmokerStatus, HeightInMeters, WeightInKilograms, BMI, name, sex):
-    values = [PhysicalActivities, HadAngina, HadStroke, HadAsthma, HadSkinCancer, HadCOPD,
-                    HadDepressiveDisorder, HadKidneyDisease, HadArthritis, HadDiabetes,DeafOrHardOfHearing, 
-                    BlindorVisionDifficulty, DifficultyConcentrating, DifficultyWalking, DifficultyDressingBathing, 
-                    SleepHours, DifficultyErrands, ChestScan, AlcoholDrinkers, HIVTesting, HighRiskLastYear, 
-                    GeneralHealth, SmokerStatus, HeightInMeters, WeightInKilograms, BMI, name, sex]
+def download_report(n_clicks, *values):
+
     if not n_clicks or None in values:
         return None
 

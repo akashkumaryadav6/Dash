@@ -30,5 +30,5 @@ cards = dbc.Container(
         className="justify-content-center align-items-center g-4",
     ),
     fluid=True,
-    style={"display": "flex", "justify-content": "center", "alignItems": "center", "height": "auto"}
+    style={"display": "flex", "alignItems": "center", "height": "auto"}
 )

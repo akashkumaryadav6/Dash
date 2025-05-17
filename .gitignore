@@ -3,3 +3,5 @@ Scripts
 etc
 pyvenv.cfg
 share
+__pycache__
+models/*

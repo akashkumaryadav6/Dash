@@ -49,8 +49,8 @@ diabetes = dbc.Container(
                 dbc.Col(dbc.Button("Download Report", id="download-btn", color="success", className="mt-3"), md=6),
             ], className="mb-3"),
 
-            html.Div(id="prediction-result", className="mt-4 text-center"),
-            dcc.Download(id="download-pdf")
+            html.Div(id="prediction-result-diabetes", className="mt-4 text-center"),
+            dcc.Download(id="download-pdf-diabetes")
         ]),
         className="shadow p-4",
         style={"borderRadius": "15px", "maxWidth": "1000px", "marginTop": "5%"}
@@ -60,7 +60,7 @@ diabetes = dbc.Container(
 )
 
 @dash.callback(
-    Output("prediction-result", "children"),
+    Output("prediction-result-diabetes", "children"),
     Input("predict-btn", "n_clicks"),
     [
         State("name", "value"),
@@ -74,7 +74,10 @@ diabetes = dbc.Container(
         State("blood_glucose_level", "value"),
     ]
 )
-def predict_diabetes(n_clicks, name, sex, age, hypertension, heart_disease, smoking_history, bmi, HbA1c_level, blood_glucose_level):
+def predict_diabetes(n_clicks, *values):
+
+    name, sex, age, hypertension, heart_disease, smoking_history, bmi, HbA1c_level, blood_glucose_level = values
+
     if not n_clicks:
         return ""
 
@@ -96,7 +99,7 @@ def predict_diabetes(n_clicks, name, sex, age, hypertension, heart_disease, smok
     return ''
 
 @dash.callback(
-    Output("download-pdf", "data"),
+    Output("download-pdf-diabetes", "data"),
     Input("download-btn", "n_clicks"),
     [
         State("name", "value"),
@@ -108,12 +111,12 @@ def predict_diabetes(n_clicks, name, sex, age, hypertension, heart_disease, smok
         State("bmi", "value"),
         State("HbA1c_level", "value"),
         State("blood_glucose_level", "value"),
-        State("prediction-result", "children")
+        State("prediction-result-diabetes", "children")
     ],
     prevent_initial_call=True
 )
-def download_diabetes_report(n_clicks, name, sex, age, hypertension, heart_disease, smoking_history,
-                              bmi, HbA1c_level, blood_glucose_level, prediction_result):
+def download_diabetes_report(n_clicks, *values):
+    name, sex, age, hypertension, heart_disease, smoking_history, bmi, HbA1c_level, blood_glucose_level, prediction_result = values
     if not n_clicks or None in [name, sex, age, hypertension, heart_disease, smoking_history, bmi, HbA1c_level, blood_glucose_level, prediction_result]:
         return None
 
