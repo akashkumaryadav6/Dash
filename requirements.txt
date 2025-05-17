@@ -3,7 +3,10 @@ Libraries
 numpy
 pandas
 scikit-learn
-streamlit
+flask
+dash
+dash_bootstrap_components
+bootstrap
 seaborn
 matplotlib
 pickle
