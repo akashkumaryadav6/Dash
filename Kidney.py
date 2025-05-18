@@ -21,87 +21,87 @@ kidney = dbc.Container(
 
             dbc.Row([
                 dbc.Col(dbc.Button("Fill Random Data", id="fill-random-btn", color="secondary", className="mb-4"), width="auto")
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Input(id="name", type="text", placeholder="Name", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="age_kidney", type="number", placeholder="Age of the patient", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="bp", type="number", placeholder="Blood pressure (mm/Hg)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="sg", type="number", step=0.01, placeholder="Specific gravity of urine", className="form-control"), md=3),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Input(id="al", type="number", placeholder="Albumin in urine", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="su", type="number", placeholder="Sugar in urine", className="form-control"), md=3),
                 dbc.Col(dcc.Dropdown(id="rbc", options = [{'label':'Normal', 'value':0}, {'label':'Abnormal', 'value':1}], placeholder="Red blood cells in urine"), md=3),
                 dbc.Col(dcc.Dropdown(id="pc", options = [{'label':'Normal', 'value':0}, {'label':'Abnormal', 'value':1}], placeholder="Pus cells in urine"), md=3),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Dropdown(id="pcc", options = [{'label':'No', 'value':0}, {'label':'Yes', 'value':1}], placeholder="Pus cell clumps in urine"), md=3),
                 dbc.Col(dcc.Dropdown(id="ba", options = [{'label':'No', 'value':0}, {'label':'Yes', 'value':1}], placeholder="Bacteria in urine"), md=3),
                 dbc.Col(dcc.Input(id="bgr", type="number", placeholder="Random blood glucose level (mg/dl)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="bu", type="number", placeholder="Blood urea (mg/dl)", className="form-control"), md=3),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Input(id="sc", type="number", placeholder="Serum creatinine (mg/dl)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="sodium", type="number", placeholder="Sodium level (mEq/L)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="potassium", type="number", placeholder="Potassium level (mEq/L)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="hemo", type="number", placeholder="Hemoglobin level (gms)", className="form-control"), md=3),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Input(id="pcv", type="number", placeholder="Packed cell volume (%)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="wbcc", type="number", placeholder="White blood cell count (cells/cumm)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="rbcc", type="number", placeholder="Red blood cell count (millions/cumm)", className="form-control"), md=3),
                 dbc.Col(dcc.Dropdown(id="htn", options = [{'label':'No', 'value':0}, {'label':'Yes', 'value':1}], placeholder="Hypertension"), md=3),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Dropdown(id="dm", options = [{'label':'No', 'value':0}, {'label':'Yes', 'value':1}], placeholder="Diabetes mellitus"), md=3),
                 dbc.Col(dcc.Dropdown(id="cad", options = [{'label':'No', 'value':0}, {'label':'Yes', 'value':1}], placeholder="Coronary artery disease"), md=3),
                 dbc.Col(dcc.Dropdown(id="appet", options = [{'label':'Poor', 'value':0}, {'label':'Good', 'value':1}], placeholder="Appetite (Good/Poor)"), md=3),
                 dbc.Col(dcc.Dropdown(id="ane", options = [{'label':'No', 'value':0}, {'label':'Yes', 'value':1}], placeholder="Anemia"), md=3),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Input(id="egfr", type="number", placeholder="Estimated GFR", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="urine_protein_creatinine_ratio", type="number", placeholder="Urine Protein/Creatinine Ratio", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="urine_output", type="number", placeholder="Urine output (ml/day)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="serum_albumin", type="number", placeholder="Serum albumin (g/dL)", className="form-control"), md=3),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Input(id="cholesterol", type="number", placeholder="Cholesterol level (mg/dL)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="pth", type="number", placeholder="Parathyroid hormone level (pg/mL)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="calcium", type="number", placeholder="Calcium level (mg/dL)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="phosphate", type="number", placeholder="Phosphate level (mg/dL)", className="form-control"), md=3),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Dropdown(id="family_history", options = [{'label':'No', 'value':0}, {'label':'Yes', 'value':1}], placeholder="Family history of kidney disease"), md=3),
                 dbc.Col(dcc.Dropdown(id="smoking_status", options = [{'label':'No', 'value':0}, {'label':'Yes', 'value':1}], placeholder="Smoking status"), md=3),
                 dbc.Col(dcc.Input(id="bmi_kidney", type="number", placeholder="Body Mass Index (kg/m²)", className="form-control"), md=3),
-                dbc.Col(dcc.Dropdown(id="physical_activity", options = [{'label':'Low', 'value':0}, {'label':'Moderate', 'value':1}, {'label':'High', 'value': 2}], placeholder="Physical activity", className="form-control"), md=3),
-            ], className="mb-3"),
+                dbc.Col(dcc.Dropdown(id="physical_activity", options = [{'label':'Low', 'value':0}, {'label':'Moderate', 'value':1}, {'label':'High', 'value': 2}], placeholder="Physical activity"), md=3),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Input(id="dm_duration", type="number", placeholder="Duration of diabetes (years)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="htn_duration", type="number", placeholder="Duration of hypertension (years)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="cystatin_c", type="number", placeholder="Cystatin C level (mg/L)", className="form-control"), md=3),
                 dbc.Col(dcc.Input(id="urinary_sediment", type="number", placeholder="Urinary sediment (cells/hpf)", className="form-control"), md=3),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Input(id="crp", type="number", placeholder="C-Reactive Protein (mg/L)", className="form-control"), md=6),
                 dbc.Col(dcc.Input(id="il6", type="number", placeholder="Interleukin-6 (pg/mL)", className="form-control"), md=6),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dbc.Button("Get Prediction", id="predict-btn", color="primary", className="mt-3"), md=6),
                 dbc.Col(dbc.Button("Download Report", id="download-btn", color="success", className="mt-3"), md=6),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             html.Div(id="prediction-result-kidney", className="mt-4 text-center"),
             dcc.Download(id="download-pdf-kidney")

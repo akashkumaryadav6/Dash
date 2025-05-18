@@ -21,39 +21,36 @@ diabetes = dbc.Container(
             html.H2("Diabetes Prediction", className="text-center mt-4 mb-4", style={"fontWeight": "bold"}),
             dbc.Row([
                 dbc.Col(dbc.Button("Fill Random Data", id="fill-random-btn", color="secondary", className="mb-4"), width="auto")
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
-                dbc.Col(dcc.Input(id="name_diabetes", type="text", placeholder="Name", className="form-control"), md=6),
+                dbc.Col(dcc.Input(id="name_diabetes", type="text", placeholder="Name", className="form-control"), md=4),
                 dbc.Col(dcc.Dropdown(id="sex_diabetes", options = [{'label':'Female', 'value':0}, {'label':'Male', 'value':1}], placeholder='Sex'), md=4),
-            ], className="mb-6"),
+                dbc.Col(dcc.Input(id="age", type="number", step=1, placeholder="Age", className="form-control"), md=4),
+            ], className="mb-1"),
             
             dbc.Row([
-                dbc.Col(dcc.Input(id="age", type="number", step=1, placeholder="Age", className="form-control"), md=4),
                 dbc.Col(dcc.Dropdown(id="hypertension", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Have Hypertension"), md=4),
                 dbc.Col(dcc.Dropdown(id="heart_disease", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Heart Disease"), md=4),
-            ], className="mb-3"),
-
-            dbc.Row([
                 dbc.Col(dcc.Dropdown(id="smoking_history", options=[
                     {"label": "Never", "value": 0},
                     {"label": "Current", "value": 1},
                     {"label": "Former", "value": 2},
                     {"label": "Ever", "value": 3},
                     {"label": "Not Current", "value": 4},
-                ], placeholder="Smoking History"), md=6),
-            ], className="mb-3"),
+                ], placeholder="Smoking History"), md=4),
+            ], className="mb-1"),
                 
             dbc.Row([
                 dbc.Col(dcc.Input(id="bmi", type="number", step=0.01, placeholder="BMI", className="form-control"), md=4),
                 dbc.Col(dcc.Input(id="HbA1c_level", type="number", step=0.1, placeholder="HbA1C Level", className="form-control"), md=4),
                 dbc.Col(dcc.Input(id="blood_glucose_level", type="number", step=1, placeholder="Blood Glucose Level", className="form-control"), md=4),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dbc.Button("Get Prediction", id="predict-btn", color="primary", className="mt-3"), md=6),
                 dbc.Col(dbc.Button("Download Report", id="download-btn", color="success", className="mt-3"), md=6),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             html.Div(id="prediction-result-diabetes", className="mt-4 text-center"),
             dcc.Download(id="download-pdf-diabetes")

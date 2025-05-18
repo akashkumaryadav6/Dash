@@ -14,7 +14,6 @@ heart_df = pd.read_csv("datasets/heart_2022.csv", low_memory=False)
 heart_df.dropna(inplace=True)
 heart_disease_model = joblib.load("./models/heart_disease_model.sav")
 
-
 heart = dbc.Container(
     dbc.Card(
         dbc.CardBody([
@@ -22,7 +21,7 @@ heart = dbc.Container(
 
             dbc.Row([
                 dbc.Col(dbc.Button("Fill Random Data", id="fill-random-btn", color="secondary", className="mb-4"), width="auto")
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Dropdown(id="GeneralHealth", options=[
@@ -31,45 +30,39 @@ heart = dbc.Container(
                     {"label": "Good", "value": 2},
                     {"label": "Very Good", "value": 4},
                     {"label": "Excellent", "value": 0},
-                ], placeholder="General Health"), md=6),
-                dbc.Col(dcc.Dropdown(id="PhysicalActivities", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Physical Activities"), md=4),
-            ], className="mb-3"),
-            
-            dbc.Row([
-                dbc.Col(dcc.Input(id="SleepHours", type="number", step=1, placeholder="Sleep Hours", className="form-control"), md=4),
-                dbc.Col(dcc.Dropdown(id="HadAngina", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Angina"), md=4),
-                dbc.Col(dcc.Dropdown(id="HadStroke", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Stroke"), md=4),
-            ], className="mb-3"),
+                ], placeholder="General Health"), md=3),
+                dbc.Col(dcc.Dropdown(id="PhysicalActivities", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Physical Activities"), md=3),
+                dbc.Col(dcc.Input(id="SleepHours", type="number", step=1, placeholder="Sleep Hours", className="form-control"), md=3),
+                dbc.Col(dcc.Dropdown(id="HadAngina", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Angina"), md=3),
+            ], className="mb-1"),
 
             dbc.Row([
-                dbc.Col(dcc.Dropdown(id="HadAsthma", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Asthma"), md=4),
-                dbc.Col(dcc.Dropdown(id="HadSkinCancer", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Skin Cancer"), md=4),
-                dbc.Col(dcc.Dropdown(id="HadCOPD", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had COPD"), md=4),
-            ], className="mb-3"),
+                dbc.Col(dcc.Dropdown(id="HadStroke", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Stroke"), md=3),
+                dbc.Col(dcc.Dropdown(id="HadAsthma", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Asthma"), md=3),
+                dbc.Col(dcc.Dropdown(id="HadSkinCancer", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Skin Cancer"), md=3),
+                dbc.Col(dcc.Dropdown(id="HadCOPD", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had COPD"), md=3),
+            ], className="mb-1"),
 
             dbc.Row([
-                dbc.Col(dcc.Dropdown(id="HadDepressiveDisorder", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Depression"), md=4),
-                dbc.Col(dcc.Dropdown(id="HadKidneyDisease", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Kidney Disease"), md=4),
-                dbc.Col(dcc.Dropdown(id="HadArthritis", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Arthritis"), md=4),
-            ], className="mb-3"),
+                dbc.Col(dcc.Dropdown(id="HadDepressiveDisorder", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Depression"), md=3),
+                dbc.Col(dcc.Dropdown(id="HadKidneyDisease", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Kidney Disease"), md=3),
+                dbc.Col(dcc.Dropdown(id="HadDiabetes", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Diabetes"), md=3),
+                dbc.Col(dcc.Dropdown(id="HadArthritis", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Arthritis"), md=3),
+            ], className="mb-1"),
 
             dbc.Row([
-                dbc.Col(dcc.Dropdown(id="HadDiabetes", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Had Diabetes"), md=4),
-                dbc.Col(dcc.Dropdown(id="DeafOrHardOfHearing", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Hearing Issue"), md=4),
-                dbc.Col(dcc.Dropdown(id="BlindOrVisionDifficulty", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Vision Issue"), md=4),
-            ], className="mb-3"),
+                dbc.Col(dcc.Dropdown(id="DeafOrHardOfHearing", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Hearing Issue"), md=3),
+                dbc.Col(dcc.Dropdown(id="BlindOrVisionDifficulty", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Vision Issue"), md=3),
+                dbc.Col(dcc.Dropdown(id="DifficultyConcentrating", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Difficulty Concentrating"), md=3),
+                dbc.Col(dcc.Dropdown(id="DifficultyWalking", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Difficulty Walking"), md=3),
+            ], className="mb-1"),
 
             dbc.Row([
-                dbc.Col(dcc.Dropdown(id="DifficultyConcentrating", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Difficulty Concentrating"), md=4),
-                dbc.Col(dcc.Dropdown(id="DifficultyWalking", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Difficulty Walking"), md=4),
-                dbc.Col(dcc.Dropdown(id="DifficultyDressingBathing", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Dressing/Bathing Difficulty"), md=4),
-            ], className="mb-3"),
-
-            dbc.Row([
-                dbc.Col(dcc.Dropdown(id="DifficultyErrands", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Difficulty Doing Errands"), md=4),
-                dbc.Col(dcc.Dropdown(id="ChestScan", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Chest Scan"), md=4),
-                dbc.Col(dcc.Dropdown(id="AlcoholDrinkers", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Alcohol Use"), md=4),
-            ], className="mb-3"),
+                dbc.Col(dcc.Dropdown(id="DifficultyDressingBathing", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Dressing/Bathing Difficulty"), md=3),
+                dbc.Col(dcc.Dropdown(id="DifficultyErrands", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Difficulty Doing Errands"), md=3),
+                dbc.Col(dcc.Dropdown(id="ChestScan", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Chest Scan"), md=3),
+                dbc.Col(dcc.Dropdown(id="AlcoholDrinkers", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="Alcohol Use"), md=3),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Dropdown(id="SmokerStatus", options=[
@@ -77,29 +70,23 @@ heart = dbc.Container(
                     {"label": "Former", "value": 2},
                     {"label": "Every Day", "value": 0},
                     {'label': "Some Days", "value": 1}
-                ], placeholder="Smoker Status"), md=6),
-            ], className="mb-3"),
+                ], placeholder="Smoker Status"), md=3),
+                dbc.Col(dcc.Dropdown(id="HIVTesting", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="HIV Test"), md=3),
+                dbc.Col(dcc.Dropdown(id="HighRiskLastYear", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="High Risk Last Year"), md=3),
+                dbc.Col(dcc.Input(id="HeightInMeters", type="number", step=0.01, placeholder="Height (m)", className="form-control"), md=3),
+            ], className="mb-1"),
 
             dbc.Row([
-                dbc.Col(dcc.Dropdown(id="HIVTesting", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="HIV Test"), md=4),
-                dbc.Col(dcc.Dropdown(id="HighRiskLastYear", options=[{"label": "Yes", "value": 1}, {"label": "No", "value": 0}], placeholder="High Risk Last Year"), md=4),
-            ], className="mb-3"),
-                
-            dbc.Row([
-                dbc.Col(dcc.Input(id="HeightInMeters", type="number", step=0.01, placeholder="Height (m)", className="form-control"), md=4),
-                dbc.Col(dcc.Input(id="WeightInKilograms", type="number", step=0.01, placeholder="Weight (kg)", className="form-control"), md=4),
-                dbc.Col(dcc.Input(id="BMI", type="number", step=0.01, placeholder="BMI", className="form-control"), md=4),
-            ], className="mb-3"),
-
-            dbc.Row([
-                dbc.Col(dcc.Input(id="name_heart", type="text", placeholder="Name", className="form-control"), md=6),
-                dbc.Col(dcc.Dropdown(id="sex_heart", options = [{'label':'Female', 'value':0}, {'label':'Male', 'value':1}], placeholder='Sex'), md=4),
-            ], className="mb-3"),
+                dbc.Col(dcc.Input(id="WeightInKilograms", type="number", step=0.01, placeholder="Weight (kg)", className="form-control"), md=3),
+                dbc.Col(dcc.Input(id="BMI", type="number", step=0.01, placeholder="BMI", className="form-control"), md=3),
+                dbc.Col(dcc.Input(id="name_heart", type="text", placeholder="Name", className="form-control"), md=3),
+                dbc.Col(dcc.Dropdown(id="sex_heart", options = [{'label':'Female', 'value':0}, {'label':'Male', 'value':1}], placeholder='Sex'), md=3),
+            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dbc.Button("Get Prediction", id="predict-btn", color="primary", className="mt-3"), md=6),
                 dbc.Col(dbc.Button("Download Report", id="download-btn", color="success", className="mt-3"), md=6),
-            ], className="mb-3"),
+            ], className="mb-1"),
 
             html.Div(id="prediction-result-heart", className="mt-4 text-center"),
             dcc.Download(id="download-pdf-heart")
@@ -110,6 +97,7 @@ heart = dbc.Container(
     fluid=True,
     className="d-flex flex-column justify-content-center align-items-center"
 )
+
 
 @dash.callback(
     Output("prediction-result-heart", "children"),
@@ -216,8 +204,8 @@ def download_report(n_clicks, *values):
                             3: "Never Smoked",
                             1: "Some Days",
                             2: "Former"}.get(SmokerStatus, "Unknown")),
-        ("Height (m)", WeightInKilograms), 
-        ("Weight (kg)", HeightInMeters), 
+        ("Height (m)", HeightInMeters), 
+        ("Weight (kg)", WeightInKilograms), 
         ("BMI", BMI),
     ]
 
@@ -295,16 +283,16 @@ def fill_from_dataset_heart(n_clicks):
     AlcoholDrinkers = Binary_map.get(str(sample["AlcoholDrinkers"]), 0)
     HIVTesting = Binary_map.get(str(sample["HIVTesting"]), 0)
     HighRiskLastYear = Binary_map.get(str(sample["HighRiskLastYear"]), 0)
-    GeneralHealth_map = {0: "Excellent",
-                            1: "Fair",
-                            2: "Good",
-                            3: "Poor",
-                            4: "Very good"}
+    GeneralHealth_map = {"Excellent":0,
+                            "Fair":1,
+                            "Good":2,
+                            "Poor":3,
+                            "Very good":4}
     GeneralHealth = GeneralHealth_map.get(str(sample["GeneralHealth"]), 0)
-    SmokerStatus_map = {0: "Current smoker - now smokes every day",
-                            3: "Never smoked",
-                            1: "Current smoker - now smokes some days",
-                            2: "Former smoker"}
+    SmokerStatus_map = {"Current smoker - now smokes every day":0,
+                            "Never smoked":1,
+                            "Current smoker - now smokes some days":2,
+                            "Former smoker":3}
     SmokerStatus = SmokerStatus_map.get(str(sample["SmokerStatus"]), 0)
     HeightInMeters = float(sample["HeightInMeters"])
     WeightInKilograms = float(sample["WeightInKilograms"])

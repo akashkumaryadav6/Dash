@@ -3,7 +3,10 @@ import dash_bootstrap_components as dbc
 
 navbar_component = dbc.Row(
     [
-        dbc.Col(dbc.NavLink("Home", href="/",className='nav'))
+        dbc.Col(dbc.NavLink("Home", href="/",className='nav')),
+        dbc.Col(dbc.NavLink("Heart", href="/heart",className='nav')),
+        dbc.Col(dbc.NavLink("Diabetes", href="/diabetes",className='nav')),
+        dbc.Col(dbc.NavLink("Kidney", href="/kidney",className='nav'))
     ],
     className="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
     align="center",
@@ -15,7 +18,7 @@ navbar = dbc.Navbar(
              dbc.Row(
                 [
                     dbc.Col(
-                        dbc.NavbarBrand("Disease Prediction", className="g-0 ms-auto flex-nowrap mt-3 mt-md-0")
+                        dbc.NavbarBrand("Disease Prediction", className="nav2")
                     ),
                 ],
                 align="center",

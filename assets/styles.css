@@ -4,16 +4,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 
 * {margin: 0;padding: 0;}
+
 body {
-    background: linear-gradient(to right,rgba(140, 122, 230, 1.0), purple, rgba(140, 122, 230, 1.0));
+    background: linear-gradient(to right, rgba(140, 122, 230, 1.0), purple, rgba(140, 122, 230, 1.0));
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: center;     
 }
+
+.green-gradient {
+    background: linear-gradient(to right, #b7e57e, #72d268, #b7e57e);
+}
+
+.blue-gradient {
+    background: linear-gradient(to right, #558cce, #3e6fac, #558cce);
+}
+
+.red-gradient{
+    background: linear-gradient(to right, #d16e88, #d24d71, #d16e88);
+}
+
 .card-text1{font-family: 'Secular One';font-size: 30px;text-align: center;font-style: solid;box-shadow: 10in;text-decoration: solid;}
 .card-text{font-family: 'Secular One';font-size: 22px;text-decoration: solid;box-shadow: 10in;text-decoration: black;}
 .center{align-items: center;align-self: center;align-content: center;}
@@ -38,14 +52,43 @@ body {
     font-size: 18px;
 }
 
+
+input.form-control, .Select-control, .Select__control {
+    border-radius: 8px !important;
+}
+
+
+input.form-control, .Select-control, .Select__control {
+    transition: all 1s ease-in-out;
+}
+
+/* Rounded buttons */
+button.btn, .btn {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Optional: add effect when button is clicked (active) */
+button.btn:active, .btn:active,
+button.btn:focus, .btn:focus {
+    border-radius: 12px !important;
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(204, 206, 204, 0.932); /* soft outline */
+}
+
+
+.nav2{
+    color: black;
+    font-family: 'Secular One';
+    font-size: 20px;
+}
+
 .card {
     align-items: center;
     border-style: hidden;
     display: flex;
     flex-direction: column;
     max-width: 100%;
-    margin-left: 10%;
-    margin-top: 40%;
+    margin-top: 20%;
 }
 
 .card-title {
@@ -56,7 +99,7 @@ body {
 
 .container {
     max-width: 1200px;
-    width: 100%;
+    width: 80%;
     padding: 10px;
 }
 
