@@ -24,9 +24,8 @@ cards = dbc.Container(
     dbc.Row(
         [
             create_card("Heart Disease Prediction", "/static/Images/heart.png", "/heart"),
-            create_card("Diabetes Prediction", "/static/Images/diabetes.jpg", "/diabetes_female"),
+            create_card("Diabetes Prediction", "/static/Images/diabetes.jpg", "/diabetes"),
             create_card("Kidney Disease Prediction", "/static/Images/kidney.png", "/kidney"),
-            create_card("Parkinson's Disease Prediction", "/static/Images/parkinsons.jpg", "/parkinsons"),
         ],
         className="justify-content-center align-items-center g-4",
     ),
