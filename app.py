@@ -4,6 +4,7 @@ from dash import Input, Output, State, html, dcc, callback
 from Cards import cards
 from Heart import heart
 from Diabetes import diabetes
+from Kidney import kidney
 from Navbar import navbar
 from notfound import notfound
 
@@ -25,8 +26,10 @@ def pages(pathname):
         return cards
     elif pathname == '/heart':
         return heart
-    elif pathname == '/diabetes_female':
+    elif pathname == '/diabetes':
         return diabetes
+    elif pathname == '/kidney':
+        return kidney
     else:
         return notfound
 
