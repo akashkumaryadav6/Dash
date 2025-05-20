@@ -10,18 +10,13 @@ import random
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
-kidney_df = pd.read_csv("datasets/kidney_disease_dataset.csv")
-kidney_df.dropna(inplace=True)
+# Load the trained model
 kidney_model = joblib.load("./models/kidney_disease_model.sav")
 
 kidney = dbc.Container(
     dbc.Card(
         dbc.CardBody([
             html.H2("Kidney Disease Prediction", className="text-center mt-4 mb-4", style={"fontWeight": "bold"}),
-
-            dbc.Row([
-                dbc.Col(dbc.Button("Fill Random Data", id="fill-random-btn", color="secondary", className="mb-4"), width="auto")
-            ], className="mb-1"),
 
             dbc.Row([
                 dbc.Col(dcc.Input(id="name", type="text", placeholder="Name", className="form-control"), md=3),
@@ -133,33 +128,32 @@ kidney = dbc.Container(
 )
 
 def predict(n_clicks, *values):
-    name, age_kidney, bp, sg, al, su, rbc, pc, pcc, ba, bgr, bu, sc, sodium, potassium, hemo, pcv, wbcc, rbcc, htn, dm, cad, appet, ane, egfr, urine_protein_creatinine_ratio, urine_output, serum_albumin, cholesterol, pth, calcium, phosphate, family_history, smoking_status,bmi_kidney, physical_activity, dm_duration, htn_duration, cystatin_c, urinary_sediment, crp, il6 = values
+    name, age, bp, sg, al, su, rbc, pc, pcc, ba, bgr, bu, sc, sodium, potassium, hemo, pcv, wbcc, rbcc, htn, dm, cad, appet, ane, egfr, urine_protein_creatinine_ratio, urine_output, serum_albumin, cholesterol, pth, calcium, phosphate, family_history, smoking_status, bmi, physical_activity, dm_duration, htn_duration, cystatin_c, urinary_sediment, crp, il6 = values
     if not n_clicks:
         return ""
-
+    
     # Check for missing inputs
     if None in [name, age_kidney, bp, sg, al, su, rbc, pc, pcc, ba, bgr, bu, sc, sodium, potassium, hemo, pcv, wbcc, rbcc, htn, dm, cad, appet, ane, egfr, urine_protein_creatinine_ratio, urine_output, serum_albumin, cholesterol, pth, calcium, phosphate, family_history, smoking_status,bmi_kidney, physical_activity, dm_duration, htn_duration, cystatin_c, urinary_sediment, crp, il6]:
         return html.Div("⚠️ Please fill all fields before predicting.", className="alert alert-warning")
 
     name = values[0]
     # Create input array
-    features = np.array([[age_kidney, bp, sg, al, su, rbc, pc, pcc, ba, bgr, bu, sc, sodium, potassium, hemo, pcv, wbcc, rbcc, htn, dm, cad, appet, ane, egfr, urine_protein_creatinine_ratio, urine_output, serum_albumin, cholesterol, pth, calcium, phosphate, family_history, smoking_status,bmi_kidney, physical_activity, dm_duration, htn_duration, cystatin_c, urinary_sediment, crp, il6]])
+    features = np.array([[age, bp, sg, al, su, rbc, pc, pcc, ba, bgr, bu, sc, sodium, potassium, hemo, pcv, wbcc, rbcc, htn, dm, cad, appet, ane, egfr, urine_protein_creatinine_ratio, urine_output, serum_albumin, cholesterol, pth, calcium, phosphate, family_history, smoking_status, bmi, physical_activity, dm_duration, htn_duration, cystatin_c, urinary_sediment, crp, il6]])
 
     # Predict using preloaded model
     prediction = kidney_model.predict(features)
-    
-    risk_labels = {
-        0: "✅ {name}, you are **NOT LIKELY** to have Kidney Disease.",
-        1: "🩺 {name}, you have **LOW RISK** of Kidney Disease.",
-        2: "🩺 {name}, you have **MODERATE RISK** of Kidney Disease.",
-        3: "🩺 {name}, you have **SEVERE RISK** of Kidney Disease.",
-        4: "🩺 {name}, you have **HIGH RISK** of Kidney Disease."
-    }
-
-    msg = risk_labels.get(prediction[0], "Unexpected prediction result.")
-    alert_class = "alert-success" if prediction[0] == 0 else "alert-danger"
-
-    return html.Div(msg.format(name=name), className=f"alert {alert_class}")
+    # Return result
+    if prediction[0] == 0:
+        return html.Div(f"✅ {name}, you are **not likely** to have Kidney Disease.", className="alert alert-success")
+    if prediction[0] == 1:
+        return html.Div(f"🩺 {name}, you have **LOW RISK** of Kidney Disease.", className="alert alert-danger")
+    if prediction[0] == 2:
+        return html.Div(f"🩺 {name}, you have **MODERATE RISK** of Kidney Disease.", className="alert alert-danger")
+    if prediction[0] == 3:
+        return html.Div(f"🩺 {name}, you have **SEVERE RISK** Kidney Disease.", className="alert alert-danger")
+    if prediction[0] == 4:
+        return html.Div(f"🩺 {name}, you have **HIGH RISK** Kidney Disease.", className="alert alert-danger")
+    return ''
 
 @dash.callback(
     Output("download-pdf-kidney", "data"),
