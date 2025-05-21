@@ -4,10 +4,8 @@ dash-core-components
 reportlab
 joblib
 numpy
-pickle
-bootstrap
 matplotlib
 seaborn
 pandas
 flask
-scikit-learn
+scikit-l

@@ -10,7 +10,11 @@ import io
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
-# Load the trained model
+diabetes_df = pd.read_csv("datasets/diabetes_prediction_dataset.csv", low_memory=False)
+diabetes_df['smoking_history'] = diabetes_df['smoking_history'].replace('No Info', np.nan)
+diabetes_df.dropna(inplace=True)
+diabetes_df['age'] = pd.to_numeric(diabetes_df['age'], errors='coerce') 
+diabetes_df = diabetes_df[diabetes_df['age'] % 1 == 0] 
 diabetes_model = joblib.load("./models/diabetes_prediction_model.sav")
 
 diabetes = dbc.Container(
